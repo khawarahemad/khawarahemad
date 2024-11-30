@@ -1,6 +1,14 @@
-# 👋 Hello, World! I'm KHAWAR  
+# 👋 Hello, World! I'm Khawar  
+
+![Profile Picture](https://github.com/khawarahemad.png?size=200)  
 
 Welcome to my corner of GitHub! 🚀 I'm a tech enthusiast, aspiring **cybersecurity professional**, and a lifelong learner passionate about innovation and problem-solving.  
+
+---
+
+<div align="center">  
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=24&pause=1000&center=true&vCenter=true&width=435&lines=Cybersecurity+Enthusiast;Full-Stack+Developer;Memory+Editing+Expert;Tech+Lover+%26+Problem+Solver" alt="Typing Animation" />
+</div>  
 
 ---
 
@@ -67,5 +75,10 @@ Let’s collaborate, share ideas, or just geek out over tech!
 - 💬 Feel free to reach out about cybersecurity, programming, or tech trends!  
 
 ---
+
+<div align="center">  
+  <img src="https://github-readme-stats.vercel.app/api?username=your-username&show_icons=true&theme=radical" alt="GitHub Stats" width="400" />  
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=your-username&theme=radical" alt="GitHub Streak" width="400" />  
+</div>  
 
 Thank you for visiting! 🌟 Explore my repositories and let’s build something amazing together.  
