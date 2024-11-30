@@ -77,8 +77,9 @@ Let’s collaborate, share ideas, or just geek out over tech!
 ---
 
 <div align="center">  
-  <img src="https://github-readme-stats.vercel.app/api?username=your-username&show_icons=true&theme=radical" alt="GitHub Stats" width="400" />  
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=your-username&theme=radical" alt="GitHub Streak" width="400" />  
+  <img src="https://github-readme-stats.vercel.app/api?username=khawarahemad&show_icons=true&theme=radical" alt="GitHub Stats" width="400" />  
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=khawarahemad&theme=radical" alt="GitHub Streak" width="400" />  
 </div>  
 
 Thank you for visiting! 🌟 Explore my repositories and let’s build something amazing together.  
+
