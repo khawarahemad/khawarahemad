@@ -1,6 +1,6 @@
 # 👋 Hello, World! I'm Khawar  
 
-![Profile Picture](https://github.com/username.png?size=200)  
+ 
 
 Welcome to my corner of GitHub! 🚀 I'm a tech enthusiast, aspiring **cybersecurity professional**, and a lifelong learner passionate about innovation and problem-solving.  
 
