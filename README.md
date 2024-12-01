@@ -1,6 +1,6 @@
 # 👋 Hello, World! I'm Khawar  
 
- 
+![Banner Image](https://source.unsplash.com/1200x400/?cybersecurity,technology,developer)
 
 Welcome to my corner of GitHub! 🚀 I'm a tech enthusiast, aspiring **cybersecurity professional**, and a lifelong learner passionate about innovation and problem-solving.  
 
@@ -13,7 +13,7 @@ Welcome to my corner of GitHub! 🚀 I'm a tech enthusiast, aspiring **cybersecu
 ---
 
 ## 🎯 **About Me**  
-- 🎓 **2rd-year Tech Student**: Learning and growing in the field of technology every day.  
+- 🎓 **2nd-year Tech Student**: Learning and growing in the field of technology every day.  
 - 🛡️ **Cybersecurity Enthusiast**:  
   - Completed a **Coursera Cybersecurity Professional Course** (3 certificates, 5 on the way!).  
   - Dedicated to protecting sensitive data and mitigating cyber threats.  
@@ -62,6 +62,14 @@ Here’s what I’m working on:
 
 ---
 
+## 📊 **GitHub Language Usage**  
+Here’s an overview of the languages I use the most:  
+<div align="center">  
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=khawarahemad&layout=compact&theme=radical" alt="Top Languages" width="400" />
+</div>  
+
+---
+
 ## 🎯 **Goals & Motivation**  
 "My goal is to make my father proud and give back for all the sacrifices he has made for my education."  
 - 💡 Striving to excel in the cybersecurity field and create impactful solutions.  
@@ -82,4 +90,3 @@ Let’s collaborate, share ideas, or just geek out over tech!
 </div>  
 
 Thank you for visiting! 🌟 Explore my repositories and let’s build something amazing together.  
-
