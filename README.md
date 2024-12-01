@@ -1,6 +1,6 @@
 # 👋 Hello, World! I'm Khawar  
 
-![Banner Image](https://source.unsplash.com/1200x400/?cybersecurity,technology,developer)
+![Banner Image](https://github.com/khawarahemad/assets/blob/main/1694790959994.jpeg)
 
 Welcome to my corner of GitHub! 🚀 I'm a tech enthusiast, aspiring **cybersecurity professional**, and a lifelong learner passionate about innovation and problem-solving.  
 
