@@ -11,7 +11,7 @@ Welcome to my corner of GitHub! 🚀 I'm a tech enthusiast, aspiring **cybersecu
 </div>  
 
 ---
-
+![Profile Views](https://komarev.com/ghpvc/?username=khawarahemad&label=Profile%20Views&color=brightgreen&style=flat)
 ## 🎯 **About Me**  
 - 🎓 **2nd-year Tech Student**: Learning and growing in the field of technology every day.  
 - 🛡️ **Cybersecurity Enthusiast**:  
@@ -60,15 +60,6 @@ Here’s what I’m working on:
 - Advanced concepts in **NoSQL databases** and **virtualization**.  
 - Optimizing **memory manipulation** processes for enhanced performance.  
 
----
-
-## 📊 **GitHub Language Usage**  
-Here’s an overview of the languages I use the most:  
-<div align="center">  
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=khawarahemad&layout=compact&theme=radical" alt="Top Languages" width="400" />
-</div>  
-
----
 
 ## 🎯 **Goals & Motivation**  
 "My goal is to make my father proud and give back for all the sacrifices he has made for my education."  
@@ -87,6 +78,12 @@ Let’s collaborate, share ideas, or just geek out over tech!
 <div align="center">  
   <img src="https://github-readme-stats.vercel.app/api?username=khawarahemad&show_icons=true&theme=radical" alt="GitHub Stats" width="400" />  
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=khawarahemad&theme=radical" alt="GitHub Streak" width="400" />  
-</div>  
-
+</div> 
+---
+## 📊 **GitHub Language Usage**  
+Here’s an overview of the languages I use the most:  
+<div align="center">  
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=khawarahemad&layout=compact&theme=radical" alt="Top Languages" width="400" />
+</div>
+---
 Thank you for visiting! 🌟 Explore my repositories and let’s build something amazing together.  
