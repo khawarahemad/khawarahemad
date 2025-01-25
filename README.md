@@ -3,7 +3,7 @@
 ![Banner Image](https://github.com/khawarahemad/assets/blob/main/1694790959994.jpeg)
 
 Welcome to my corner of GitHub! 🚀 I'm a tech enthusiast, aspiring **cybersecurity professional**, and a lifelong learner passionate about innovation and problem-solving.  
-Visite Portfolio - https://khawarahemad.netlify.app
+
 ---
 
 <div align="center">  
@@ -11,6 +11,7 @@ Visite Portfolio - https://khawarahemad.netlify.app
 </div>  
 
 ---
+**Visite Portfolio** - https://khawarahemad.netlify.app
 ![Profile Views](https://komarev.com/ghpvc/?username=khawarahemad&label=Profile%20Views&color=brightgreen&style=flat)
 ## 🎯 **About Me**  
 - 🎓 **2nd-year Tech Student**: Learning and growing in the field of technology every day.  
