@@ -80,7 +80,6 @@ Let’s collaborate, share ideas, or just geek out over tech!
 
 <div align="center">  
   <img src="https://github-readme-stats.vercel.app/api?username=khawarahemad&show_icons=true&theme=radical" alt="GitHub Stats" width="400" />  
-  [![GitHub Streak](https://github-readme-streak-stats.herokuapp.com?user=khawarahemad)](https://git.io/streak-stats)
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=khawarahemad&theme=radical" alt="GitHub Streak" width="400" /> 
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=khawarahemad&layout=compact&theme=radical" alt="Top Languages" width="400" />
 </div> 
