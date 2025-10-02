@@ -48,20 +48,20 @@ Here’s what I work with:
 
 ---
 
-## 🚀 **Current Projects**  
-Here’s what I’m working on:  
-- 🤖 **Discord Bots**:  
-  - A music bot to elevate Discord server experiences.  
-  - A chatbot using Python to teach coding and assist users with tasks.  
-- 🌐 **Emulator Development**: Creating a high-performance emulator for .apk files on **Mac** (Intel & M1 compatibility).  
-- 🖥️ **Virtual Machine (VM)**: Building a VM for Android gaming on Apple M1 Mac.  
+## 🚀 Current Projects  
+- **Reverse Engineering**  
+  - Exploring advanced concepts in cryptographic network security.  
+  - Researching and implementing network data sniffing and manipulation techniques.  
+- **Windows API Manipulation**  
+  - Developing methods for secure and efficient API interaction.  
 
 ---
 
-## 🌱 **What I'm Learning**  
-- Cybersecurity fundamentals with a focus on **identity theft** and **organizational security**.  
-- Advanced concepts in **NoSQL databases** and **virtualization**.  
-- Optimizing **memory manipulation** processes for enhanced performance.  
+## 🌱 Learning Focus  
+- Mastering **Reverse Engineering** with emphasis on **IDA Pro**.  
+- Gaining expertise in **network data interception and modification**.  
+- Enhancing skills in **memory manipulation** for performance optimization.  
+
 
 
 ## 🎯 **Goals & Motivation**  
