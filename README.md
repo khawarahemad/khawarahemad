@@ -13,11 +13,6 @@ I'm a **Computer Science Engineering student**, cybersecurity explorer, and buil
 
 ---
 
-🌐 **Portfolio**  
-https://portfolio-lw3w.vercel.app  
-
----
-
 ![Profile Views](https://komarev.com/ghpvc/?username=khawarahemad&label=Profile%20Views&color=brightgreen&style=flat)
 
 ---
