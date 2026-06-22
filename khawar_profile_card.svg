@@ -1,382 +1,456 @@
+<svg width="820" height="720" viewBox="0 0 820 720" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap');
+    .mono { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+    .sans { font-family: 'Space Grotesk', Arial, sans-serif; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+    .blink { animation: blink 1s step-end infinite; }
+    @keyframes ringpulse { 0%,100%{filter:drop-shadow(0 0 6px rgba(229,57,53,0.4))} 50%{filter:drop-shadow(0 0 16px rgba(255,82,82,0.7))} }
+    .ring { animation: ringpulse 3s ease-in-out infinite; }
+    @keyframes statusblink { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .statusdot { animation: statusblink 2s ease-in-out infinite; }
+    @keyframes scanmove { 0%{transform:translateY(0)} 100%{transform:translateY(8px)} }
+    @keyframes chipglow0 { 0%,100%{opacity:1} 50%{opacity:0.7} }
+    .chip0{animation:chipglow0 2.8s 0.0s ease-in-out infinite;}
+    .chip1{animation:chipglow0 2.8s 0.28s ease-in-out infinite;}
+    .chip2{animation:chipglow0 2.8s 0.56s ease-in-out infinite;}
+    .chip3{animation:chipglow0 2.8s 0.84s ease-in-out infinite;}
+    .chip4{animation:chipglow0 2.8s 1.12s ease-in-out infinite;}
+    .chip5{animation:chipglow0 2.8s 1.40s ease-in-out infinite;}
+    .chip6{animation:chipglow0 2.8s 1.68s ease-in-out infinite;}
+    .chip7{animation:chipglow0 2.8s 1.96s ease-in-out infinite;}
+    .chip8{animation:chipglow0 2.8s 2.24s ease-in-out infinite;}
+    .chip9{animation:chipglow0 2.8s 2.52s ease-in-out infinite;}
+    @keyframes projhover0 { 0%,100%{transform:translateX(0)} 50%{transform:translateX(3px)} }
+    .proj0{animation:projhover0 4.0s 0.0s ease-in-out infinite;}
+    .proj1{animation:projhover0 4.0s 0.4s ease-in-out infinite;}
+    .proj2{animation:projhover0 4.0s 0.8s ease-in-out infinite;}
+    .proj3{animation:projhover0 4.0s 1.2s ease-in-out infinite;}
+    .proj4{animation:projhover0 4.0s 1.6s ease-in-out infinite;}
+    .proj5{animation:projhover0 4.0s 2.0s ease-in-out infinite;}
+    @keyframes cardpulse { 0%,100%{stroke-opacity:0.4} 50%{stroke-opacity:0.9} }
+    .cardedge { animation: cardpulse 4s ease-in-out infinite; }
+    @keyframes termcursor { 0%,100%{fill:#ff5252} 50%{fill:transparent} }
+    .cursor { animation: termcursor 1s step-end infinite; }
+  </style>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap');
+  <!-- Scanline pattern -->
+  <pattern id="scan" x="0" y="0" width="1" height="4" patternUnits="userSpaceOnUse">
+    <rect x="0" y="0" width="820" height="2" fill="rgba(255,82,82,0.012)"/>
+  </pattern>
 
-*{box-sizing:border-box;margin:0;padding:0;}
+  <!-- Sidebar gradient -->
+  <linearGradient id="sideGrad" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#0e0e18"/>
+    <stop offset="100%" stop-color="#111118"/>
+  </linearGradient>
 
-:root{
---red:#e53935;--red2:#ff5252;--red3:#ff1744;
---bg:#0a0a0d;--bg2:#111118;--bg3:#1a1a24;--bg4:#1e1e2e;
---border:#2a2a3a;--border2:#3a1a1a;
---text:#e8e8f0;--muted:#8888a8;--accent:#ff5252;
-}
+  <!-- Red accent vertical line grad -->
+  <linearGradient id="accentLine" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#e53935" stop-opacity="0"/>
+    <stop offset="30%" stop-color="#e53935" stop-opacity="0.7"/>
+    <stop offset="70%" stop-color="#ff5252" stop-opacity="0.7"/>
+    <stop offset="100%" stop-color="#e53935" stop-opacity="0"/>
+  </linearGradient>
 
-body{background:transparent;font-family:'Space Grotesk',sans-serif;color:var(--text);}
+  <!-- Footer gradient -->
+  <linearGradient id="footGrad" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="rgba(229,57,53,0.0)"/>
+    <stop offset="50%" stop-color="rgba(229,57,53,0.08)"/>
+    <stop offset="100%" stop-color="rgba(229,57,53,0.0)"/>
+  </linearGradient>
 
-.card{
-  width:100%;max-width:820px;margin:0 auto;
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-radius:16px;
-  overflow:hidden;
-  position:relative;
-}
+  <!-- Divider gradient -->
+  <linearGradient id="divGrad" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#2a1a1a" stop-opacity="0"/>
+    <stop offset="50%" stop-color="#3a1a1a" stop-opacity="1"/>
+    <stop offset="100%" stop-color="#2a1a1a" stop-opacity="0"/>
+  </linearGradient>
 
-.scanline{
-  position:absolute;inset:0;pointer-events:none;z-index:0;
-  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,82,82,0.015) 2px,rgba(255,82,82,0.015) 4px);
-  border-radius:16px;
-}
+  <!-- Avatar clip -->
+  <clipPath id="avClip"><circle cx="130" cy="178" r="44"/></clipPath>
 
-.topbar{
-  background:var(--bg2);
-  border-bottom:1px solid var(--border2);
-  padding:10px 20px;
-  display:flex;align-items:center;gap:10px;
-  font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);
-}
-.dots{display:flex;gap:6px;}
-.dot{width:11px;height:11px;border-radius:50%;}
-.d1{background:#ff5f57;}.d2{background:#febc2e;}.d3{background:#28c840;}
-.cmd{color:var(--red2);}
-.blink{animation:blink 1s step-end infinite;}
-@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+  <!-- Card clip -->
+  <clipPath id="cardClip"><rect x="0" y="0" width="820" height="720" rx="14"/></clipPath>
 
-.layout{display:grid;grid-template-columns:260px 1fr;min-height:600px;}
+  <!-- Chip clips -->
+  <clipPath id="chip0c"><rect x="0" y="0" width="78" height="20" rx="4"/></clipPath>
+  <clipPath id="chip1c"><rect x="0" y="0" width="90" height="20" rx="4"/></clipPath>
+</defs>
 
-.sidebar{
-  background:var(--bg2);
-  border-right:1px solid var(--border);
-  padding:32px 24px;
-  display:flex;flex-direction:column;gap:24px;
-  position:relative;
-}
+<!-- ═══ CARD BACKGROUND ═══ -->
+<g clip-path="url(#cardClip)">
 
-.sidebar::after{
-  content:'';position:absolute;top:0;right:-1px;bottom:0;width:1px;
-  background:linear-gradient(to bottom,transparent,var(--red) 40%,var(--red) 60%,transparent);
-  opacity:0.4;
-}
+<!-- Main bg -->
+<rect width="820" height="720" fill="#0a0a0d"/>
 
-.avatar-wrap{position:relative;display:flex;justify-content:center;}
+<!-- Subtle red corner glows -->
+<radialGradient id="cornerGlow1" cx="0%" cy="0%" r="40%">
+  <stop offset="0%" stop-color="#e53935" stop-opacity="0.06"/>
+  <stop offset="100%" stop-color="#e53935" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="cornerGlow2" cx="100%" cy="100%" r="40%">
+  <stop offset="0%" stop-color="#e53935" stop-opacity="0.04"/>
+  <stop offset="100%" stop-color="#e53935" stop-opacity="0"/>
+</radialGradient>
+<rect width="820" height="720" fill="url(#cornerGlow1)"/>
+<rect width="820" height="720" fill="url(#cornerGlow2)"/>
 
-.avatar-ring{
-  width:100px;height:100px;border-radius:50%;
-  border:2px solid var(--red);
-  padding:3px;
-  position:relative;
-  box-shadow:0 0 18px rgba(229,57,53,0.25),inset 0 0 8px rgba(229,57,53,0.05);
-  animation:ringpulse 3s ease-in-out infinite;
-}
-@keyframes ringpulse{0%,100%{box-shadow:0 0 18px rgba(229,57,53,0.25);}50%{box-shadow:0 0 30px rgba(255,82,82,0.45);}}
+<!-- Scanlines -->
+<rect width="820" height="720" fill="url(#scan)"/>
 
-.avatar-inner{
-  width:100%;height:100%;border-radius:50%;
-  background:var(--bg4);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;
-  color:var(--red2);letter-spacing:-1px;
-  overflow:hidden;
-}
+<!-- ═══ TOP BAR ═══ -->
+<rect x="0" y="0" width="820" height="36" fill="#0e0e18"/>
+<rect x="0" y="35" width="820" height="1" fill="#2a1a1a" opacity="0.8"/>
 
-.status-dot{
-  position:absolute;bottom:6px;right:calc(50% - 42px);
-  width:13px;height:13px;border-radius:50%;
-  background:#00e676;border:2px solid var(--bg2);
-  animation:statusblink 2s ease-in-out infinite;
-}
-@keyframes statusblink{0%,100%{box-shadow:0 0 0 0 rgba(0,230,118,0.4);}50%{box-shadow:0 0 0 5px rgba(0,230,118,0);}}
+<!-- Traffic dots -->
+<circle cx="20" cy="18" r="5.5" fill="#ff5f57"/>
+<circle cx="36" cy="18" r="5.5" fill="#febc2e"/>
+<circle cx="52" cy="18" r="5.5" fill="#28c840"/>
 
-.name-block{text-align:center;}
-.name{font-size:20px;font-weight:700;color:var(--text);letter-spacing:0.5px;}
-.handle{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--red2);margin-top:4px;}
-.tagline{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.6;font-style:italic;}
+<!-- Terminal command -->
+<text x="74" y="23" class="mono" font-size="11" fill="#666688">
+  <tspan fill="#ff5252">khawar</tspan>
+  <tspan fill="#555577">@</tspan>
+  <tspan fill="#8888aa">phantom</tspan>
+  <tspan fill="#ff5252">:</tspan>
+  <tspan fill="#8888aa">~</tspan>
+  <tspan fill="#ff5252">$ </tspan>
+  <tspan fill="#8888aa">whoami --verbose --ghost-mode</tspan>
+</text>
+<rect x="388" y="12" width="7" height="13" fill="#ff5252" class="cursor"/>
 
-.divider{height:1px;background:linear-gradient(to right,transparent,var(--border2),transparent);}
+<!-- Top bar right tag -->
+<text x="800" y="23" class="mono" font-size="10" fill="#3a3a55" text-anchor="end">v2.0.0</text>
 
-.meta-list{display:flex;flex-direction:column;gap:8px;}
-.meta-row{display:flex;align-items:center;gap:10px;font-size:11.5px;color:var(--muted);}
-.meta-icon{color:var(--red2);font-size:13px;width:14px;flex-shrink:0;}
-.meta-val{color:var(--text);}
-.meta-link{color:var(--red2);text-decoration:none;}
+<!-- ═══ SIDEBAR ═══ -->
+<rect x="0" y="36" width="260" height="684" fill="url(#sideGrad)"/>
 
-.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
-.stat-box{
-  background:var(--bg4);border:1px solid var(--border2);border-radius:8px;
-  padding:10px 6px;text-align:center;
-  transition:border-color 0.2s;
-}
-.stat-box:hover{border-color:var(--red);}
-.stat-n{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;color:var(--red2);}
-.stat-l{font-size:9px;color:var(--muted);margin-top:2px;text-transform:uppercase;letter-spacing:1px;}
+<!-- Sidebar red accent edge -->
+<rect x="259" y="36" width="1.5" height="648" fill="url(#accentLine)"/>
 
-.tags-wrap{display:flex;flex-wrap:wrap;gap:6px;}
-.tag{
-  font-family:'JetBrains Mono',monospace;font-size:9.5px;
-  padding:4px 9px;border-radius:4px;
-  border:1px solid var(--border2);
-  color:var(--red2);background:rgba(229,57,53,0.07);
-}
+<!-- ═══ AVATAR ═══ -->
+<!-- Outer pulse ring -->
+<circle cx="130" cy="178" r="55" fill="none" stroke="#e53935" stroke-width="1.5" stroke-opacity="0.3" class="ring"/>
+<circle cx="130" cy="178" r="50" fill="none" stroke="#ff5252" stroke-width="1" stroke-opacity="0.5" stroke-dasharray="8 5"/>
 
-.main{padding:28px 28px 24px;display:flex;flex-direction:column;gap:22px;}
+<!-- Avatar circle bg -->
+<circle cx="130" cy="178" r="44" fill="#1a1a28"/>
+<!-- Avatar initials -->
+<text x="130" y="190" class="mono" font-size="26" font-weight="700" fill="#ff5252" text-anchor="middle">KA</text>
+<!-- White border -->
+<circle cx="130" cy="178" r="44" fill="none" stroke="#ff5252" stroke-width="2" stroke-opacity="0.6"/>
+<circle cx="130" cy="178" r="44" fill="none" stroke="white" stroke-width="0.8" stroke-opacity="0.1"/>
 
-.section-label{
-  font-family:'JetBrains Mono',monospace;font-size:10px;
-  color:var(--red);letter-spacing:2px;text-transform:uppercase;
-  display:flex;align-items:center;gap:8px;margin-bottom:12px;
-}
-.section-label::before{content:'//';color:var(--muted);}
-.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+<!-- Status dot -->
+<circle cx="164" cy="212" r="6" fill="#00e676" class="statusdot"/>
+<circle cx="164" cy="212" r="6" fill="none" stroke="#0a0a0d" stroke-width="2.5"/>
 
-.about-text{font-size:12.5px;color:var(--muted);line-height:1.75;}
-.about-text span{color:var(--text);}
+<!-- ═══ NAME / HANDLE / TAGLINE ═══ -->
+<text x="130" y="243" class="sans" font-size="17" font-weight="700" fill="#e8e8f0" text-anchor="middle">Khawar Ahemad Khan</text>
+<text x="130" y="260" class="mono" font-size="11" fill="#ff5252" text-anchor="middle">@khawarahemad</text>
+<text x="130" y="278" class="sans" font-size="10" font-style="italic" fill="#6666884" fill-opacity="0" text-anchor="middle"></text>
 
-.lang-grid{display:flex;flex-wrap:wrap;gap:6px;}
-.chip{
-  font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;
-  padding:5px 11px;border-radius:5px;
-  display:flex;align-items:center;gap:5px;
-}
-.chip-dot{width:6px;height:6px;border-radius:50%;}
+<!-- Italic tagline - two lines -->
+<text x="130" y="276" class="sans" font-size="9.5" font-style="italic" fill="#777799" text-anchor="middle">"Security researcher by day,</text>
+<text x="130" y="289" class="sans" font-size="9.5" font-style="italic" fill="#777799" text-anchor="middle">builder by every waking hour."</text>
 
-.proj-list{display:flex;flex-direction:column;gap:2px;}
-.proj{
-  padding:10px 12px;border-radius:8px;
-  border:1px solid transparent;
-  display:grid;grid-template-columns:1fr auto;gap:4px;
-  transition:background 0.2s,border-color 0.2s;
-  cursor:default;
-}
-.proj:hover{background:var(--bg3);border-color:var(--border2);}
-.proj-top{display:flex;align-items:center;gap:8px;}
-.proj-bullet{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
-.proj-name{font-size:12.5px;font-weight:600;color:var(--text);}
-.proj-desc{font-size:11px;color:var(--muted);margin-top:3px;padding-left:15px;line-height:1.5;}
-.proj-lang{
-  font-family:'JetBrains Mono',monospace;font-size:9px;
-  padding:2px 8px;border-radius:4px;align-self:start;margin-top:2px;
-  border:1px solid;
-}
-.proj-stars{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--muted);}
+<!-- Divider -->
+<line x1="20" y1="302" x2="240" y2="302" stroke="url(#divGrad)" stroke-width="1"/>
 
-.learning-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-.learn-card{
-  background:var(--bg3);border:1px solid var(--border);border-radius:8px;
-  padding:12px 14px;
-  transition:border-color 0.2s;
-}
-.learn-card:hover{border-color:var(--red);}
-.learn-title{font-size:11.5px;font-weight:600;color:var(--text);margin-bottom:4px;display:flex;align-items:center;gap:6px;}
-.learn-icon{color:var(--red2);font-size:13px;}
-.learn-sub{font-size:10.5px;color:var(--muted);line-height:1.55;}
+<!-- ═══ META INFO ═══ -->
+<!-- Map pin icon placeholder + text -->
+<text x="24" y="320" class="mono" font-size="11" fill="#ff5252">◎</text>
+<text x="40" y="320" class="sans" font-size="11" fill="#a0a0c0">Khurda, Odisha, India</text>
 
-.footer{
-  border-top:1px solid var(--border);
-  background:var(--bg2);
-  padding:10px 24px;
-  display:flex;align-items:center;justify-content:space-between;
-}
-.footer-left{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);}
-.footer-right{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--red2);}
-.footer-links{display:flex;gap:16px;}
-.footer-link{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);text-decoration:none;transition:color 0.2s;}
-.footer-link:hover{color:var(--red2);}
-</style>
+<text x="24" y="337" class="mono" font-size="11" fill="#ff5252">▸</text>
+<text x="40" y="337" class="sans" font-size="11" fill="#a0a0c0">BTech CSE &apos;27 — CUTM</text>
 
-<div class="card">
-  <div class="scanline"></div>
+<text x="24" y="354" class="mono" font-size="11" fill="#ff5252">⚑</text>
+<text x="40" y="354" class="sans" font-size="11" fill="#a0a0c0">Cybersecurity &amp; Ethical Hacking</text>
 
-  <div class="topbar">
-    <div class="dots"><div class="dot d1"></div><div class="dot d2"></div><div class="dot d3"></div></div>
-    <span style="margin-left:8px;"><span class="cmd">khawar</span>@phantom<span class="cmd">:</span>~<span class="cmd">$</span> whoami</span>
-    <span class="blink">▊</span>
-  </div>
+<text x="24" y="371" class="mono" font-size="11" fill="#ff5252">→</text>
+<text x="40" y="371" class="sans" font-size="11" fill="#ff7070">khawarahemad.com</text>
 
-  <div class="layout">
+<text x="24" y="388" class="mono" font-size="11" fill="#ff5252">⌥</text>
+<text x="40" y="388" class="sans" font-size="10.5" fill="#ff7070">github.com/khawarahemad</text>
 
-    <div class="sidebar">
-      <div class="avatar-wrap">
-        <div class="avatar-ring">
-          <div class="avatar-inner">KA</div>
-        </div>
-        <div class="status-dot"></div>
-      </div>
+<text x="24" y="405" class="mono" font-size="11" fill="#ff5252">✉</text>
+<text x="40" y="405" class="sans" font-size="10" fill="#a0a0c0">hellow@khawarahemad.com</text>
 
-      <div class="name-block">
-        <div class="name">Khawar Ahemad Khan</div>
-        <div class="handle">@khawarahemad</div>
-        <div class="tagline">"Security researcher by day,<br>builder by every waking hour."</div>
-      </div>
+<!-- Divider -->
+<line x1="20" y1="418" x2="240" y2="418" stroke="url(#divGrad)" stroke-width="1"/>
 
-      <div class="divider"></div>
+<!-- ═══ STATS GRID ═══ -->
+<text x="24" y="433" class="mono" font-size="9" fill="#555577" letter-spacing="1.5">// STATS</text>
 
-      <div class="meta-list">
-        <div class="meta-row">
-          <i class="ti ti-map-pin meta-icon" aria-hidden="true"></i>
-          <span class="meta-val">Khurda, Odisha, India</span>
-        </div>
-        <div class="meta-row">
-          <i class="ti ti-school meta-icon" aria-hidden="true"></i>
-          <span class="meta-val">BTech CSE '27 — CUTM</span>
-        </div>
-        <div class="meta-row">
-          <i class="ti ti-shield-lock meta-icon" aria-hidden="true"></i>
-          <span class="meta-val">Cybersecurity &amp; Ethical Hacking</span>
-        </div>
-        <div class="meta-row">
-          <i class="ti ti-link meta-icon" aria-hidden="true"></i>
-          <a class="meta-link" href="https://khawarahemad.com">khawarahemad.com</a>
-        </div>
-        <div class="meta-row">
-          <i class="ti ti-brand-github meta-icon" aria-hidden="true"></i>
-          <a class="meta-link" href="https://github.com/khawarahemad">github.com/khawarahemad</a>
-        </div>
-        <div class="meta-row">
-          <i class="ti ti-mail meta-icon" aria-hidden="true"></i>
-          <span class="meta-val" style="font-size:10.5px;">hellow@khawarahemad.com</span>
-        </div>
-      </div>
+<!-- Stat box 1 -->
+<rect x="18" y="440" width="70" height="46" rx="6" fill="#1a1a28" stroke="#2a1a1a" stroke-width="1"/>
+<text x="53" y="462" class="mono" font-size="18" font-weight="700" fill="#ff5252" text-anchor="middle">12+</text>
+<text x="53" y="479" class="mono" font-size="8" fill="#666688" text-anchor="middle" letter-spacing="1">PROJECTS</text>
 
-      <div class="divider"></div>
+<!-- Stat box 2 -->
+<rect x="95" y="440" width="70" height="46" rx="6" fill="#1a1a28" stroke="#2a1a1a" stroke-width="1"/>
+<text x="130" y="462" class="mono" font-size="18" font-weight="700" fill="#ff5252" text-anchor="middle">3</text>
+<text x="130" y="479" class="mono" font-size="8" fill="#666688" text-anchor="middle" letter-spacing="1">LIVE APPS</text>
 
-      <div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;">// stats</div>
-        <div class="stat-grid">
-          <div class="stat-box"><div class="stat-n">12+</div><div class="stat-l">Projects</div></div>
-          <div class="stat-box"><div class="stat-n">3</div><div class="stat-l">Live Apps</div></div>
-          <div class="stat-box"><div class="stat-n">∞</div><div class="stat-l">Bugs Found</div></div>
-        </div>
-      </div>
+<!-- Stat box 3 -->
+<rect x="172" y="440" width="70" height="46" rx="6" fill="#1a1a28" stroke="#2a1a1a" stroke-width="1"/>
+<text x="207" y="462" class="mono" font-size="18" font-weight="700" fill="#ff5252" text-anchor="middle">∞</text>
+<text x="207" y="479" class="mono" font-size="8" fill="#666688" text-anchor="middle" letter-spacing="1">BUGS FOUND</text>
 
-      <div class="divider"></div>
+<!-- Divider -->
+<line x1="20" y1="496" x2="240" y2="496" stroke="url(#divGrad)" stroke-width="1"/>
 
-      <div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;">// focus areas</div>
-        <div class="tags-wrap">
-          <div class="tag">Red Teaming</div>
-          <div class="tag">Bug Bounty</div>
-          <div class="tag">Reverse Engineering</div>
-          <div class="tag">Full-Stack Dev</div>
-          <div class="tag">AI Agents</div>
-          <div class="tag">Automation</div>
-        </div>
-      </div>
-    </div>
+<!-- ═══ FOCUS TAGS ═══ -->
+<text x="24" y="511" class="mono" font-size="9" fill="#555577" letter-spacing="1.5">// FOCUS AREAS</text>
 
-    <div class="main">
+<!-- Tag row 1 -->
+<rect x="18" y="518" width="70" height="18" rx="4" fill="rgba(229,57,53,0.1)" stroke="#3a1a1a" stroke-width="1"/>
+<text x="53" y="531" class="mono" font-size="9" fill="#ff7070" text-anchor="middle">Red Teaming</text>
 
-      <div>
-        <div class="section-label">about me</div>
-        <div class="about-text">
-          <span>Final-year BTech CSE student</span> specializing in cybersecurity &amp; ethical hacking at Centurion University. Co-founder of <span>SoleSet</span> (soleset.in), builder of <span>IqamaPrint</span>, and creator of <span>PHANTOM</span> — an autonomous AI penetration testing agent. Active in bug bounty hunting, responsible disclosure, and red teaming. I build systems that break other systems — responsibly.
-        </div>
-      </div>
+<rect x="94" y="518" width="72" height="18" rx="4" fill="rgba(229,57,53,0.1)" stroke="#3a1a1a" stroke-width="1"/>
+<text x="130" y="531" class="mono" font-size="9" fill="#ff7070" text-anchor="middle">Bug Bounty</text>
 
-      <div>
-        <div class="section-label">languages &amp; stack</div>
-        <div class="lang-grid">
-          <div class="chip" style="background:rgba(85,85,170,0.15);border:1px solid rgba(85,85,170,0.4);color:#a0a0ff;"><div class="chip-dot" style="background:#7070cc;"></div>C / C++</div>
-          <div class="chip" style="background:rgba(49,120,198,0.15);border:1px solid rgba(49,120,198,0.4);color:#70b0ff;"><div class="chip-dot" style="background:#3178c6;"></div>TypeScript</div>
-          <div class="chip" style="background:rgba(55,118,171,0.15);border:1px solid rgba(55,118,171,0.4);color:#80c0ff;"><div class="chip-dot" style="background:#3776ab;"></div>Python</div>
-          <div class="chip" style="background:rgba(0,120,212,0.15);border:1px solid rgba(0,120,212,0.4);color:#60b8ff;"><div class="chip-dot" style="background:#0078d4;"></div>Node.js</div>
-          <div class="chip" style="background:rgba(97,218,251,0.12);border:1px solid rgba(97,218,251,0.35);color:#61daff;"><div class="chip-dot" style="background:#61dafb;"></div>React</div>
-          <div class="chip" style="background:rgba(62,207,142,0.12);border:1px solid rgba(62,207,142,0.35);color:#5feaaa;"><div class="chip-dot" style="background:#3ecf8e;"></div>Supabase</div>
-          <div class="chip" style="background:rgba(85,85,85,0.2);border:1px solid rgba(140,140,140,0.35);color:#c0c0c0;"><div class="chip-dot" style="background:#888;"></div>Assembly / x86</div>
-          <div class="chip" style="background:rgba(229,57,53,0.12);border:1px solid rgba(229,57,53,0.35);color:#ff7070;"><div class="chip-dot" style="background:#e53935;"></div>Electron / Playwright</div>
-          <div class="chip" style="background:rgba(180,100,0,0.15);border:1px solid rgba(220,130,0,0.4);color:#ffb060;"><div class="chip-dot" style="background:#c87800;"></div>JavaScript</div>
-          <div class="chip" style="background:rgba(36,41,46,0.5);border:1px solid rgba(100,100,100,0.4);color:#d0d0d0;"><div class="chip-dot" style="background:#24292e;"></div>Bash / Linux</div>
-        </div>
-      </div>
+<!-- Tag row 2 -->
+<rect x="18" y="542" width="100" height="18" rx="4" fill="rgba(229,57,53,0.1)" stroke="#3a1a1a" stroke-width="1"/>
+<text x="68" y="555" class="mono" font-size="9" fill="#ff7070" text-anchor="middle">Reverse Engineering</text>
 
-      <div>
-        <div class="section-label">featured projects</div>
-        <div class="proj-list">
+<rect x="124" y="542" width="80" height="18" rx="4" fill="rgba(229,57,53,0.1)" stroke="#3a1a1a" stroke-width="1"/>
+<text x="164" y="555" class="mono" font-size="9" fill="#ff7070" text-anchor="middle">Full-Stack Dev</text>
 
-          <div class="proj">
-            <div>
-              <div class="proj-top"><div class="proj-bullet" style="background:#ff5252;"></div><span class="proj-name">PHANTOM</span></div>
-              <div class="proj-desc">Autonomous AI pentesting agent — 33-class attack framework, Electron + Playwright, live browser viewport, CDP tool registry</div>
-            </div>
-            <div><div class="proj-lang" style="color:#a0a0ff;border-color:rgba(85,85,170,0.5);background:rgba(85,85,170,0.1);">TS / C++</div></div>
-          </div>
+<!-- Tag row 3 -->
+<rect x="18" y="566" width="64" height="18" rx="4" fill="rgba(229,57,53,0.1)" stroke="#3a1a1a" stroke-width="1"/>
+<text x="50" y="579" class="mono" font-size="9" fill="#ff7070" text-anchor="middle">AI Agents</text>
 
-          <div class="proj">
-            <div>
-              <div class="proj-top"><div class="proj-bullet" style="background:#ff5252;"></div><span class="proj-name">IqamaPrint</span></div>
-              <div class="proj-desc">Live cloud-native doc platform · thousands of users · React 18, Supabase, Razorpay, RLS security</div>
-            </div>
-            <div><div class="proj-lang" style="color:#61daff;border-color:rgba(97,218,251,0.4);background:rgba(97,218,251,0.08);">React</div></div>
-          </div>
+<rect x="88" y="566" width="72" height="18" rx="4" fill="rgba(229,57,53,0.1)" stroke="#3a1a1a" stroke-width="1"/>
+<text x="124" y="579" class="mono" font-size="9" fill="#ff7070" text-anchor="middle">Automation</text>
 
-          <div class="proj">
-            <div>
-              <div class="proj-top"><div class="proj-bullet" style="background:#ff7043;"></div><span class="proj-name">Phantom Eye</span></div>
-              <div class="proj-desc">Chrome extension (MV3) · security vulnerability scanner · static analysis + Anthropic API for AI-powered detection</div>
-            </div>
-            <div><div class="proj-lang" style="color:#ffb060;border-color:rgba(180,100,0,0.4);background:rgba(180,100,0,0.1);">JS / API</div></div>
-          </div>
+<rect x="166" y="566" width="76" height="18" rx="4" fill="rgba(229,57,53,0.1)" stroke="#3a1a1a" stroke-width="1"/>
+<text x="204" y="579" class="mono" font-size="9" fill="#ff7070" text-anchor="middle">Pentesting</text>
 
-          <div class="proj">
-            <div>
-              <div class="proj-top"><div class="proj-bullet" style="background:#ff7043;"></div><span class="proj-name">Phantom Typer</span></div>
-              <div class="proj-desc">Hardware-level keystroke injection at 500–800 CPM · keyboard lib · zero fat-finger errors</div>
-            </div>
-            <div><div class="proj-lang" style="color:#80c0ff;border-color:rgba(55,118,171,0.4);background:rgba(55,118,171,0.1);">Python</div></div>
-          </div>
+<!-- Divider -->
+<line x1="20" y1="596" x2="240" y2="596" stroke="url(#divGrad)" stroke-width="1"/>
 
-          <div class="proj">
-            <div>
-              <div class="proj-top"><div class="proj-bullet" style="background:#ffa726;"></div><span class="proj-name">SoleSet</span></div>
-              <div class="proj-desc">Co-founded e-commerce platform · Next.js / Supabase · budget-friendly shoes · soleset.in</div>
-            </div>
-            <div><div class="proj-lang" style="color:#70b0ff;border-color:rgba(49,120,198,0.4);background:rgba(49,120,198,0.1);">Next.js</div></div>
-          </div>
+<!-- Phantom branding at bottom of sidebar -->
+<text x="130" y="618" class="mono" font-size="9" fill="#333355" text-anchor="middle">[ PHANTOM v2.0 · ACTIVE ]</text>
+<text x="130" y="633" class="mono" font-size="9" fill="#2a2a44" text-anchor="middle">uptime: ∞  ·  mode: ghost</text>
 
-          <div class="proj">
-            <div>
-              <div class="proj-top"><div class="proj-bullet" style="background:#ffa726;"></div><span class="proj-name">Aadhaar PDF Verifier</span></div>
-              <div class="proj-desc">Desktop tool · digital signature verification · PyMuPDF + pyhanko · dark UI, threaded verification</div>
-            </div>
-            <div><div class="proj-lang" style="color:#80c0ff;border-color:rgba(55,118,171,0.4);background:rgba(55,118,171,0.1);">Python</div></div>
-          </div>
 
-        </div>
-      </div>
+<!-- ═══ MAIN PANEL ═══ -->
+<rect x="260" y="36" width="560" height="648" fill="#0a0a0d"/>
 
-      <div>
-        <div class="section-label">currently learning</div>
-        <div class="learning-grid">
-          <div class="learn-card">
-            <div class="learn-title"><i class="ti ti-cpu learn-icon" aria-hidden="true"></i> Kernel-mode dev</div>
-            <div class="learn-sub">Windows internals · driver development · ring-0 exploitation concepts</div>
-          </div>
-          <div class="learn-card">
-            <div class="learn-title"><i class="ti ti-brain learn-icon" aria-hidden="true"></i> AI agent architecture</div>
-            <div class="learn-sub">Agentic loops · tool registries · autonomous decision-making pipelines</div>
-          </div>
-          <div class="learn-card">
-            <div class="learn-title"><i class="ti ti-cloud learn-icon" aria-hidden="true"></i> AWS Cloud Practitioner</div>
-            <div class="learn-sub">Preparing for certification · cloud-native infra · IaC patterns</div>
-          </div>
-          <div class="learn-card">
-            <div class="learn-title"><i class="ti ti-bug learn-icon" aria-hidden="true"></i> Advanced bug bounty</div>
-            <div class="learn-sub">IDOR chains · auth bypass · payment webhook tamper · structured recon</div>
-          </div>
-        </div>
-      </div>
+<!-- ─── ABOUT ME ─── -->
+<!-- Section label -->
+<text x="280" y="64" class="mono" font-size="9.5" fill="#555577">// </text>
+<text x="298" y="64" class="mono" font-size="9.5" fill="#e53935" letter-spacing="2">ABOUT ME</text>
+<line x1="356" y1="60" x2="800" y2="60" stroke="#1e1e2e" stroke-width="1"/>
 
-    </div>
-  </div>
+<text x="280" y="81" class="sans" font-size="11.5" fill="#8888a8">
+  <tspan fill="#e0e0f0">Final-year BTech CSE student</tspan> specializing in cybersecurity at
+</text>
+<text x="280" y="96" class="sans" font-size="11.5" fill="#8888a8">
+  Centurion University. Co-founder of <tspan fill="#ff5252">SoleSet</tspan>, builder of <tspan fill="#ff5252">IqamaPrint</tspan>,
+</text>
+<text x="280" y="111" class="sans" font-size="11.5" fill="#8888a8">
+  and creator of <tspan fill="#ff5252">PHANTOM</tspan> — an autonomous AI pentesting agent. Active
+</text>
+<text x="280" y="126" class="sans" font-size="11.5" fill="#8888a8">
+  in bug bounty, responsible disclosure, and red teaming.
+</text>
 
-  <div class="footer">
-    <div class="footer-left">
-      <span style="color:var(--red2);">▶</span>&nbsp;phantom_agent v2.0 · uptime: <span style="color:var(--text);">∞</span>
-    </div>
-    <div class="footer-links">
-      <a class="footer-link" href="https://khawarahemad.com">portfolio</a>
-      <a class="footer-link" href="https://soleset.in">soleset</a>
-      <a class="footer-link" href="mailto:hellow@khawarahemad.com">contact</a>
-    </div>
-    <div class="footer-right">+91 9861016872</div>
-  </div>
-</div>
+<!-- ─── LANGUAGES & STACK ─── -->
+<line x1="260" y1="143" x2="820" y2="143" stroke="#1a1a28" stroke-width="1"/>
+<text x="280" y="158" class="mono" font-size="9.5" fill="#555577">// </text>
+<text x="298" y="158" class="mono" font-size="9.5" fill="#e53935" letter-spacing="2">LANGUAGES &amp; STACK</text>
+<line x1="464" y1="154" x2="800" y2="154" stroke="#1e1e2e" stroke-width="1"/>
+
+<!-- Chip row 1 -->
+<!-- C/C++ -->
+<g class="chip0">
+<rect x="280" y="165" width="64" height="20" rx="4" fill="rgba(85,85,170,0.15)" stroke="rgba(85,85,170,0.45)" stroke-width="1"/>
+<circle cx="291" cy="175" r="3" fill="#7070cc"/>
+<text x="302" y="179" class="mono" font-size="9.5" fill="#a0a0ff">C / C++</text>
+</g>
+<!-- TypeScript -->
+<g class="chip1">
+<rect x="350" y="165" width="88" height="20" rx="4" fill="rgba(49,120,198,0.15)" stroke="rgba(49,120,198,0.45)" stroke-width="1"/>
+<circle cx="361" cy="175" r="3" fill="#3178c6"/>
+<text x="372" y="179" class="mono" font-size="9.5" fill="#70b0ff">TypeScript</text>
+</g>
+<!-- Python -->
+<g class="chip2">
+<rect x="444" y="165" width="66" height="20" rx="4" fill="rgba(55,118,171,0.15)" stroke="rgba(55,118,171,0.45)" stroke-width="1"/>
+<circle cx="455" cy="175" r="3" fill="#3776ab"/>
+<text x="466" y="179" class="mono" font-size="9.5" fill="#80c0ff">Python</text>
+</g>
+<!-- Node.js -->
+<g class="chip3">
+<rect x="516" y="165" width="66" height="20" rx="4" fill="rgba(0,120,212,0.15)" stroke="rgba(0,120,212,0.45)" stroke-width="1"/>
+<circle cx="527" cy="175" r="3" fill="#0078d4"/>
+<text x="538" y="179" class="mono" font-size="9.5" fill="#60b8ff">Node.js</text>
+</g>
+<!-- React -->
+<g class="chip4">
+<rect x="588" y="165" width="58" height="20" rx="4" fill="rgba(97,218,251,0.12)" stroke="rgba(97,218,251,0.35)" stroke-width="1"/>
+<circle cx="599" cy="175" r="3" fill="#61dafb"/>
+<text x="610" y="179" class="mono" font-size="9.5" fill="#61daff">React</text>
+</g>
+<!-- Supabase -->
+<g class="chip5">
+<rect x="652" y="165" width="76" height="20" rx="4" fill="rgba(62,207,142,0.12)" stroke="rgba(62,207,142,0.35)" stroke-width="1"/>
+<circle cx="663" cy="175" r="3" fill="#3ecf8e"/>
+<text x="674" y="179" class="mono" font-size="9.5" fill="#5feaaa">Supabase</text>
+</g>
+
+<!-- Chip row 2 -->
+<!-- Assembly -->
+<g class="chip6">
+<rect x="280" y="191" width="96" height="20" rx="4" fill="rgba(85,85,85,0.2)" stroke="rgba(140,140,140,0.35)" stroke-width="1"/>
+<circle cx="291" cy="201" r="3" fill="#888"/>
+<text x="302" y="205" class="mono" font-size="9.5" fill="#c0c0c0">Assembly/x86</text>
+</g>
+<!-- Electron -->
+<g class="chip7">
+<rect x="382" y="191" width="106" height="20" rx="4" fill="rgba(229,57,53,0.12)" stroke="rgba(229,57,53,0.35)" stroke-width="1"/>
+<circle cx="393" cy="201" r="3" fill="#e53935"/>
+<text x="404" y="205" class="mono" font-size="9.5" fill="#ff7070">Electron/Playwright</text>
+</g>
+<!-- JavaScript -->
+<g class="chip8">
+<rect x="494" y="191" width="88" height="20" rx="4" fill="rgba(180,100,0,0.15)" stroke="rgba(220,130,0,0.4)" stroke-width="1"/>
+<circle cx="505" cy="201" r="3" fill="#c87800"/>
+<text x="516" y="205" class="mono" font-size="9.5" fill="#ffb060">JavaScript</text>
+</g>
+<!-- Bash -->
+<g class="chip9">
+<rect x="588" y="191" width="84" height="20" rx="4" fill="rgba(36,41,46,0.5)" stroke="rgba(100,100,100,0.4)" stroke-width="1"/>
+<circle cx="599" cy="201" r="3" fill="#444"/>
+<text x="610" y="205" class="mono" font-size="9.5" fill="#d0d0d0">Bash / Linux</text>
+</g>
+
+<!-- ─── FEATURED PROJECTS ─── -->
+<line x1="260" y1="222" x2="820" y2="222" stroke="#1a1a28" stroke-width="1"/>
+<text x="280" y="237" class="mono" font-size="9.5" fill="#555577">// </text>
+<text x="298" y="237" class="mono" font-size="9.5" fill="#e53935" letter-spacing="2">FEATURED PROJECTS</text>
+<line x1="494" y1="233" x2="800" y2="233" stroke="#1e1e2e" stroke-width="1"/>
+
+<!-- Project 1: PHANTOM -->
+<g class="proj0">
+<circle cx="289" cy="253" r="4" fill="#ff5252"/>
+<text x="301" y="257" class="sans" font-size="12.5" font-weight="600" fill="#e8e8f0">PHANTOM</text>
+<rect x="730" y="245" width="64" height="17" rx="4" fill="rgba(85,85,170,0.15)" stroke="rgba(85,85,170,0.5)" stroke-width="1"/>
+<text x="762" y="257" class="mono" font-size="9" fill="#a0a0ff" text-anchor="middle">TS / C++</text>
+<text x="301" y="271" class="sans" font-size="10.5" fill="#666688">Autonomous AI pentesting agent · 33-class attack framework · Electron + Playwright · CDP tool registry</text>
+<line x1="280" y1="280" x2="800" y2="280" stroke="#1a1a28" stroke-width="0.7"/>
+</g>
+
+<!-- Project 2: IqamaPrint -->
+<g class="proj1">
+<circle cx="289" cy="295" r="4" fill="#ff5252"/>
+<text x="301" y="299" class="sans" font-size="12.5" font-weight="600" fill="#e8e8f0">IqamaPrint</text>
+<rect x="730" y="287" width="64" height="17" rx="4" fill="rgba(97,218,251,0.1)" stroke="rgba(97,218,251,0.4)" stroke-width="1"/>
+<text x="762" y="299" class="mono" font-size="9" fill="#61daff" text-anchor="middle">React / SB</text>
+<text x="301" y="313" class="sans" font-size="10.5" fill="#666688">Live cloud-native doc platform · thousands of registered users · Supabase, Razorpay, RLS security</text>
+<line x1="280" y1="322" x2="800" y2="322" stroke="#1a1a28" stroke-width="0.7"/>
+</g>
+
+<!-- Project 3: Phantom Eye -->
+<g class="proj2">
+<circle cx="289" cy="337" r="4" fill="#ff7043"/>
+<text x="301" y="341" class="sans" font-size="12.5" font-weight="600" fill="#e8e8f0">Phantom Eye</text>
+<rect x="730" y="329" width="64" height="17" rx="4" fill="rgba(180,100,0,0.15)" stroke="rgba(180,100,0,0.4)" stroke-width="1"/>
+<text x="762" y="341" class="mono" font-size="9" fill="#ffb060" text-anchor="middle">JS / API</text>
+<text x="301" y="355" class="sans" font-size="10.5" fill="#666688">Chrome MV3 extension · static analysis + Anthropic API · IDOR / auth bypass / vibe-code detection</text>
+<line x1="280" y1="364" x2="800" y2="364" stroke="#1a1a28" stroke-width="0.7"/>
+</g>
+
+<!-- Project 4: Phantom Typer -->
+<g class="proj3">
+<circle cx="289" cy="379" r="4" fill="#ff7043"/>
+<text x="301" y="383" class="sans" font-size="12.5" font-weight="600" fill="#e8e8f0">Phantom Typer</text>
+<rect x="730" y="371" width="64" height="17" rx="4" fill="rgba(55,118,171,0.15)" stroke="rgba(55,118,171,0.45)" stroke-width="1"/>
+<text x="762" y="383" class="mono" font-size="9" fill="#80c0ff" text-anchor="middle">Python</text>
+<text x="301" y="397" class="sans" font-size="10.5" fill="#666688">Hardware-level keystroke injection at 500–800 CPM · keyboard lib · zero fat-finger errors · GUI</text>
+<line x1="280" y1="406" x2="800" y2="406" stroke="#1a1a28" stroke-width="0.7"/>
+</g>
+
+<!-- Project 5: SoleSet -->
+<g class="proj4">
+<circle cx="289" cy="421" r="4" fill="#ffa726"/>
+<text x="301" y="425" class="sans" font-size="12.5" font-weight="600" fill="#e8e8f0">SoleSet</text>
+<rect x="730" y="413" width="64" height="17" rx="4" fill="rgba(49,120,198,0.15)" stroke="rgba(49,120,198,0.4)" stroke-width="1"/>
+<text x="762" y="425" class="mono" font-size="9" fill="#70b0ff" text-anchor="middle">Next.js</text>
+<text x="301" y="439" class="sans" font-size="10.5" fill="#666688">Co-founded e-commerce · Next.js / Supabase · budget-friendly shoes · live at soleset.in</text>
+<line x1="280" y1="448" x2="800" y2="448" stroke="#1a1a28" stroke-width="0.7"/>
+</g>
+
+<!-- Project 6: Aadhaar Verifier -->
+<g class="proj5">
+<circle cx="289" cy="463" r="4" fill="#ffa726"/>
+<text x="301" y="467" class="sans" font-size="12.5" font-weight="600" fill="#e8e8f0">Aadhaar PDF Verifier</text>
+<rect x="730" y="455" width="64" height="17" rx="4" fill="rgba(55,118,171,0.15)" stroke="rgba(55,118,171,0.45)" stroke-width="1"/>
+<text x="762" y="467" class="mono" font-size="9" fill="#80c0ff" text-anchor="middle">Python</text>
+<text x="301" y="481" class="sans" font-size="10.5" fill="#666688">Desktop tool · digital signature verification · PyMuPDF + pyhanko · dark UI, threaded, color-coded</text>
+</g>
+
+<!-- ─── CURRENTLY LEARNING ─── -->
+<line x1="260" y1="499" x2="820" y2="499" stroke="#1a1a28" stroke-width="1"/>
+<text x="280" y="514" class="mono" font-size="9.5" fill="#555577">// </text>
+<text x="298" y="514" class="mono" font-size="9.5" fill="#e53935" letter-spacing="2">CURRENTLY LEARNING</text>
+<line x1="508" y1="510" x2="800" y2="510" stroke="#1e1e2e" stroke-width="1"/>
+
+<!-- Learn card 1 -->
+<rect x="280" y="522" width="248" height="58" rx="6" fill="#111118" stroke="#1e1e2e" stroke-width="1"/>
+<text x="296" y="540" class="sans" font-size="11" font-weight="600" fill="#e0e0f0">Kernel-mode Dev</text>
+<text x="296" y="555" class="sans" font-size="10" fill="#666688">Windows internals · driver dev</text>
+<text x="296" y="569" class="sans" font-size="10" fill="#666688">ring-0 exploitation concepts</text>
+<text x="520" y="540" class="mono" font-size="11" fill="#ff5252">▸</text>
+
+<!-- Learn card 2 -->
+<rect x="536" y="522" width="248" height="58" rx="6" fill="#111118" stroke="#1e1e2e" stroke-width="1"/>
+<text x="552" y="540" class="sans" font-size="11" font-weight="600" fill="#e0e0f0">AI Agent Architecture</text>
+<text x="552" y="555" class="sans" font-size="10" fill="#666688">Agentic loops · tool registries</text>
+<text x="552" y="569" class="sans" font-size="10" fill="#666688">autonomous decision pipelines</text>
+<text x="776" y="540" class="mono" font-size="11" fill="#ff5252">▸</text>
+
+<!-- Learn card 3 -->
+<rect x="280" y="586" width="248" height="58" rx="6" fill="#111118" stroke="#1e1e2e" stroke-width="1"/>
+<text x="296" y="604" class="sans" font-size="11" font-weight="600" fill="#e0e0f0">AWS Cloud Practitioner</text>
+<text x="296" y="619" class="sans" font-size="10" fill="#666688">Certification prep · cloud-native</text>
+<text x="296" y="633" class="sans" font-size="10" fill="#666688">IaC patterns · infra design</text>
+<text x="520" y="604" class="mono" font-size="11" fill="#ff5252">▸</text>
+
+<!-- Learn card 4 -->
+<rect x="536" y="586" width="248" height="58" rx="6" fill="#111118" stroke="#1e1e2e" stroke-width="1"/>
+<text x="552" y="604" class="sans" font-size="11" font-weight="600" fill="#e0e0f0">Advanced Bug Bounty</text>
+<text x="552" y="619" class="sans" font-size="10" fill="#666688">IDOR chains · auth bypass</text>
+<text x="552" y="633" class="sans" font-size="10" fill="#666688">payment webhook tamper · recon</text>
+<text x="776" y="604" class="mono" font-size="11" fill="#ff5252">▸</text>
+
+</g>
+<!-- End card clip group -->
+
+<!-- ═══ FOOTER ═══ -->
+<rect x="0" y="684" width="820" height="36" fill="#0a0a10"/>
+<rect x="0" y="684" width="820" height="1" fill="#2a1a1a" opacity="0.7"/>
+<rect x="0" y="684" width="820" height="36" fill="url(#footGrad)"/>
+
+<text x="20" y="706" class="mono" font-size="10" fill="#ff5252">▶</text>
+<text x="32" y="706" class="mono" font-size="10" fill="#444466">phantom_agent v2.0 · uptime: </text>
+<text x="214" y="706" class="mono" font-size="10" fill="#e0e0f0">∞</text>
+
+<text x="280" y="706" class="mono" font-size="10" fill="#333355">·</text>
+<text x="296" y="706" class="mono" font-size="10" fill="#3a3a5a">khawarahemad.com</text>
+<text x="420" y="706" class="mono" font-size="10" fill="#333355">·</text>
+<text x="436" y="706" class="mono" font-size="10" fill="#3a3a5a">soleset.in</text>
+<text x="500" y="706" class="mono" font-size="10" fill="#333355">·</text>
+<text x="516" y="706" class="mono" font-size="10" fill="#3a3a5a">+91 9861016872</text>
+
+<text x="800" y="706" class="mono" font-size="10" fill="#333355" text-anchor="end">[ ghost.mode: ON ]</text>
+
+<!-- ═══ OUTER CARD BORDER ═══ -->
+<rect x="0.5" y="0.5" width="819" height="719" rx="13.5" fill="none" stroke="#e53935" stroke-width="1" stroke-opacity="0.35" class="cardedge"/>
+
+</svg>
