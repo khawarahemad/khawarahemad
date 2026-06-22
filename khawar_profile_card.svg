@@ -1,0 +1,382 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+--red:#e53935;--red2:#ff5252;--red3:#ff1744;
+--bg:#0a0a0d;--bg2:#111118;--bg3:#1a1a24;--bg4:#1e1e2e;
+--border:#2a2a3a;--border2:#3a1a1a;
+--text:#e8e8f0;--muted:#8888a8;--accent:#ff5252;
+}
+
+body{background:transparent;font-family:'Space Grotesk',sans-serif;color:var(--text);}
+
+.card{
+  width:100%;max-width:820px;margin:0 auto;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:16px;
+  overflow:hidden;
+  position:relative;
+}
+
+.scanline{
+  position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,82,82,0.015) 2px,rgba(255,82,82,0.015) 4px);
+  border-radius:16px;
+}
+
+.topbar{
+  background:var(--bg2);
+  border-bottom:1px solid var(--border2);
+  padding:10px 20px;
+  display:flex;align-items:center;gap:10px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);
+}
+.dots{display:flex;gap:6px;}
+.dot{width:11px;height:11px;border-radius:50%;}
+.d1{background:#ff5f57;}.d2{background:#febc2e;}.d3{background:#28c840;}
+.cmd{color:var(--red2);}
+.blink{animation:blink 1s step-end infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+
+.layout{display:grid;grid-template-columns:260px 1fr;min-height:600px;}
+
+.sidebar{
+  background:var(--bg2);
+  border-right:1px solid var(--border);
+  padding:32px 24px;
+  display:flex;flex-direction:column;gap:24px;
+  position:relative;
+}
+
+.sidebar::after{
+  content:'';position:absolute;top:0;right:-1px;bottom:0;width:1px;
+  background:linear-gradient(to bottom,transparent,var(--red) 40%,var(--red) 60%,transparent);
+  opacity:0.4;
+}
+
+.avatar-wrap{position:relative;display:flex;justify-content:center;}
+
+.avatar-ring{
+  width:100px;height:100px;border-radius:50%;
+  border:2px solid var(--red);
+  padding:3px;
+  position:relative;
+  box-shadow:0 0 18px rgba(229,57,53,0.25),inset 0 0 8px rgba(229,57,53,0.05);
+  animation:ringpulse 3s ease-in-out infinite;
+}
+@keyframes ringpulse{0%,100%{box-shadow:0 0 18px rgba(229,57,53,0.25);}50%{box-shadow:0 0 30px rgba(255,82,82,0.45);}}
+
+.avatar-inner{
+  width:100%;height:100%;border-radius:50%;
+  background:var(--bg4);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;
+  color:var(--red2);letter-spacing:-1px;
+  overflow:hidden;
+}
+
+.status-dot{
+  position:absolute;bottom:6px;right:calc(50% - 42px);
+  width:13px;height:13px;border-radius:50%;
+  background:#00e676;border:2px solid var(--bg2);
+  animation:statusblink 2s ease-in-out infinite;
+}
+@keyframes statusblink{0%,100%{box-shadow:0 0 0 0 rgba(0,230,118,0.4);}50%{box-shadow:0 0 0 5px rgba(0,230,118,0);}}
+
+.name-block{text-align:center;}
+.name{font-size:20px;font-weight:700;color:var(--text);letter-spacing:0.5px;}
+.handle{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--red2);margin-top:4px;}
+.tagline{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.6;font-style:italic;}
+
+.divider{height:1px;background:linear-gradient(to right,transparent,var(--border2),transparent);}
+
+.meta-list{display:flex;flex-direction:column;gap:8px;}
+.meta-row{display:flex;align-items:center;gap:10px;font-size:11.5px;color:var(--muted);}
+.meta-icon{color:var(--red2);font-size:13px;width:14px;flex-shrink:0;}
+.meta-val{color:var(--text);}
+.meta-link{color:var(--red2);text-decoration:none;}
+
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.stat-box{
+  background:var(--bg4);border:1px solid var(--border2);border-radius:8px;
+  padding:10px 6px;text-align:center;
+  transition:border-color 0.2s;
+}
+.stat-box:hover{border-color:var(--red);}
+.stat-n{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;color:var(--red2);}
+.stat-l{font-size:9px;color:var(--muted);margin-top:2px;text-transform:uppercase;letter-spacing:1px;}
+
+.tags-wrap{display:flex;flex-wrap:wrap;gap:6px;}
+.tag{
+  font-family:'JetBrains Mono',monospace;font-size:9.5px;
+  padding:4px 9px;border-radius:4px;
+  border:1px solid var(--border2);
+  color:var(--red2);background:rgba(229,57,53,0.07);
+}
+
+.main{padding:28px 28px 24px;display:flex;flex-direction:column;gap:22px;}
+
+.section-label{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  color:var(--red);letter-spacing:2px;text-transform:uppercase;
+  display:flex;align-items:center;gap:8px;margin-bottom:12px;
+}
+.section-label::before{content:'//';color:var(--muted);}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+.about-text{font-size:12.5px;color:var(--muted);line-height:1.75;}
+.about-text span{color:var(--text);}
+
+.lang-grid{display:flex;flex-wrap:wrap;gap:6px;}
+.chip{
+  font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;
+  padding:5px 11px;border-radius:5px;
+  display:flex;align-items:center;gap:5px;
+}
+.chip-dot{width:6px;height:6px;border-radius:50%;}
+
+.proj-list{display:flex;flex-direction:column;gap:2px;}
+.proj{
+  padding:10px 12px;border-radius:8px;
+  border:1px solid transparent;
+  display:grid;grid-template-columns:1fr auto;gap:4px;
+  transition:background 0.2s,border-color 0.2s;
+  cursor:default;
+}
+.proj:hover{background:var(--bg3);border-color:var(--border2);}
+.proj-top{display:flex;align-items:center;gap:8px;}
+.proj-bullet{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.proj-name{font-size:12.5px;font-weight:600;color:var(--text);}
+.proj-desc{font-size:11px;color:var(--muted);margin-top:3px;padding-left:15px;line-height:1.5;}
+.proj-lang{
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  padding:2px 8px;border-radius:4px;align-self:start;margin-top:2px;
+  border:1px solid;
+}
+.proj-stars{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--muted);}
+
+.learning-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.learn-card{
+  background:var(--bg3);border:1px solid var(--border);border-radius:8px;
+  padding:12px 14px;
+  transition:border-color 0.2s;
+}
+.learn-card:hover{border-color:var(--red);}
+.learn-title{font-size:11.5px;font-weight:600;color:var(--text);margin-bottom:4px;display:flex;align-items:center;gap:6px;}
+.learn-icon{color:var(--red2);font-size:13px;}
+.learn-sub{font-size:10.5px;color:var(--muted);line-height:1.55;}
+
+.footer{
+  border-top:1px solid var(--border);
+  background:var(--bg2);
+  padding:10px 24px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.footer-left{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);}
+.footer-right{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--red2);}
+.footer-links{display:flex;gap:16px;}
+.footer-link{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.footer-link:hover{color:var(--red2);}
+</style>
+
+<div class="card">
+  <div class="scanline"></div>
+
+  <div class="topbar">
+    <div class="dots"><div class="dot d1"></div><div class="dot d2"></div><div class="dot d3"></div></div>
+    <span style="margin-left:8px;"><span class="cmd">khawar</span>@phantom<span class="cmd">:</span>~<span class="cmd">$</span> whoami</span>
+    <span class="blink">▊</span>
+  </div>
+
+  <div class="layout">
+
+    <div class="sidebar">
+      <div class="avatar-wrap">
+        <div class="avatar-ring">
+          <div class="avatar-inner">KA</div>
+        </div>
+        <div class="status-dot"></div>
+      </div>
+
+      <div class="name-block">
+        <div class="name">Khawar Ahemad Khan</div>
+        <div class="handle">@khawarahemad</div>
+        <div class="tagline">"Security researcher by day,<br>builder by every waking hour."</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="meta-list">
+        <div class="meta-row">
+          <i class="ti ti-map-pin meta-icon" aria-hidden="true"></i>
+          <span class="meta-val">Khurda, Odisha, India</span>
+        </div>
+        <div class="meta-row">
+          <i class="ti ti-school meta-icon" aria-hidden="true"></i>
+          <span class="meta-val">BTech CSE '27 — CUTM</span>
+        </div>
+        <div class="meta-row">
+          <i class="ti ti-shield-lock meta-icon" aria-hidden="true"></i>
+          <span class="meta-val">Cybersecurity &amp; Ethical Hacking</span>
+        </div>
+        <div class="meta-row">
+          <i class="ti ti-link meta-icon" aria-hidden="true"></i>
+          <a class="meta-link" href="https://khawarahemad.com">khawarahemad.com</a>
+        </div>
+        <div class="meta-row">
+          <i class="ti ti-brand-github meta-icon" aria-hidden="true"></i>
+          <a class="meta-link" href="https://github.com/khawarahemad">github.com/khawarahemad</a>
+        </div>
+        <div class="meta-row">
+          <i class="ti ti-mail meta-icon" aria-hidden="true"></i>
+          <span class="meta-val" style="font-size:10.5px;">hellow@khawarahemad.com</span>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;">// stats</div>
+        <div class="stat-grid">
+          <div class="stat-box"><div class="stat-n">12+</div><div class="stat-l">Projects</div></div>
+          <div class="stat-box"><div class="stat-n">3</div><div class="stat-l">Live Apps</div></div>
+          <div class="stat-box"><div class="stat-n">∞</div><div class="stat-l">Bugs Found</div></div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;">// focus areas</div>
+        <div class="tags-wrap">
+          <div class="tag">Red Teaming</div>
+          <div class="tag">Bug Bounty</div>
+          <div class="tag">Reverse Engineering</div>
+          <div class="tag">Full-Stack Dev</div>
+          <div class="tag">AI Agents</div>
+          <div class="tag">Automation</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main">
+
+      <div>
+        <div class="section-label">about me</div>
+        <div class="about-text">
+          <span>Final-year BTech CSE student</span> specializing in cybersecurity &amp; ethical hacking at Centurion University. Co-founder of <span>SoleSet</span> (soleset.in), builder of <span>IqamaPrint</span>, and creator of <span>PHANTOM</span> — an autonomous AI penetration testing agent. Active in bug bounty hunting, responsible disclosure, and red teaming. I build systems that break other systems — responsibly.
+        </div>
+      </div>
+
+      <div>
+        <div class="section-label">languages &amp; stack</div>
+        <div class="lang-grid">
+          <div class="chip" style="background:rgba(85,85,170,0.15);border:1px solid rgba(85,85,170,0.4);color:#a0a0ff;"><div class="chip-dot" style="background:#7070cc;"></div>C / C++</div>
+          <div class="chip" style="background:rgba(49,120,198,0.15);border:1px solid rgba(49,120,198,0.4);color:#70b0ff;"><div class="chip-dot" style="background:#3178c6;"></div>TypeScript</div>
+          <div class="chip" style="background:rgba(55,118,171,0.15);border:1px solid rgba(55,118,171,0.4);color:#80c0ff;"><div class="chip-dot" style="background:#3776ab;"></div>Python</div>
+          <div class="chip" style="background:rgba(0,120,212,0.15);border:1px solid rgba(0,120,212,0.4);color:#60b8ff;"><div class="chip-dot" style="background:#0078d4;"></div>Node.js</div>
+          <div class="chip" style="background:rgba(97,218,251,0.12);border:1px solid rgba(97,218,251,0.35);color:#61daff;"><div class="chip-dot" style="background:#61dafb;"></div>React</div>
+          <div class="chip" style="background:rgba(62,207,142,0.12);border:1px solid rgba(62,207,142,0.35);color:#5feaaa;"><div class="chip-dot" style="background:#3ecf8e;"></div>Supabase</div>
+          <div class="chip" style="background:rgba(85,85,85,0.2);border:1px solid rgba(140,140,140,0.35);color:#c0c0c0;"><div class="chip-dot" style="background:#888;"></div>Assembly / x86</div>
+          <div class="chip" style="background:rgba(229,57,53,0.12);border:1px solid rgba(229,57,53,0.35);color:#ff7070;"><div class="chip-dot" style="background:#e53935;"></div>Electron / Playwright</div>
+          <div class="chip" style="background:rgba(180,100,0,0.15);border:1px solid rgba(220,130,0,0.4);color:#ffb060;"><div class="chip-dot" style="background:#c87800;"></div>JavaScript</div>
+          <div class="chip" style="background:rgba(36,41,46,0.5);border:1px solid rgba(100,100,100,0.4);color:#d0d0d0;"><div class="chip-dot" style="background:#24292e;"></div>Bash / Linux</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-label">featured projects</div>
+        <div class="proj-list">
+
+          <div class="proj">
+            <div>
+              <div class="proj-top"><div class="proj-bullet" style="background:#ff5252;"></div><span class="proj-name">PHANTOM</span></div>
+              <div class="proj-desc">Autonomous AI pentesting agent — 33-class attack framework, Electron + Playwright, live browser viewport, CDP tool registry</div>
+            </div>
+            <div><div class="proj-lang" style="color:#a0a0ff;border-color:rgba(85,85,170,0.5);background:rgba(85,85,170,0.1);">TS / C++</div></div>
+          </div>
+
+          <div class="proj">
+            <div>
+              <div class="proj-top"><div class="proj-bullet" style="background:#ff5252;"></div><span class="proj-name">IqamaPrint</span></div>
+              <div class="proj-desc">Live cloud-native doc platform · thousands of users · React 18, Supabase, Razorpay, RLS security</div>
+            </div>
+            <div><div class="proj-lang" style="color:#61daff;border-color:rgba(97,218,251,0.4);background:rgba(97,218,251,0.08);">React</div></div>
+          </div>
+
+          <div class="proj">
+            <div>
+              <div class="proj-top"><div class="proj-bullet" style="background:#ff7043;"></div><span class="proj-name">Phantom Eye</span></div>
+              <div class="proj-desc">Chrome extension (MV3) · security vulnerability scanner · static analysis + Anthropic API for AI-powered detection</div>
+            </div>
+            <div><div class="proj-lang" style="color:#ffb060;border-color:rgba(180,100,0,0.4);background:rgba(180,100,0,0.1);">JS / API</div></div>
+          </div>
+
+          <div class="proj">
+            <div>
+              <div class="proj-top"><div class="proj-bullet" style="background:#ff7043;"></div><span class="proj-name">Phantom Typer</span></div>
+              <div class="proj-desc">Hardware-level keystroke injection at 500–800 CPM · keyboard lib · zero fat-finger errors</div>
+            </div>
+            <div><div class="proj-lang" style="color:#80c0ff;border-color:rgba(55,118,171,0.4);background:rgba(55,118,171,0.1);">Python</div></div>
+          </div>
+
+          <div class="proj">
+            <div>
+              <div class="proj-top"><div class="proj-bullet" style="background:#ffa726;"></div><span class="proj-name">SoleSet</span></div>
+              <div class="proj-desc">Co-founded e-commerce platform · Next.js / Supabase · budget-friendly shoes · soleset.in</div>
+            </div>
+            <div><div class="proj-lang" style="color:#70b0ff;border-color:rgba(49,120,198,0.4);background:rgba(49,120,198,0.1);">Next.js</div></div>
+          </div>
+
+          <div class="proj">
+            <div>
+              <div class="proj-top"><div class="proj-bullet" style="background:#ffa726;"></div><span class="proj-name">Aadhaar PDF Verifier</span></div>
+              <div class="proj-desc">Desktop tool · digital signature verification · PyMuPDF + pyhanko · dark UI, threaded verification</div>
+            </div>
+            <div><div class="proj-lang" style="color:#80c0ff;border-color:rgba(55,118,171,0.4);background:rgba(55,118,171,0.1);">Python</div></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div>
+        <div class="section-label">currently learning</div>
+        <div class="learning-grid">
+          <div class="learn-card">
+            <div class="learn-title"><i class="ti ti-cpu learn-icon" aria-hidden="true"></i> Kernel-mode dev</div>
+            <div class="learn-sub">Windows internals · driver development · ring-0 exploitation concepts</div>
+          </div>
+          <div class="learn-card">
+            <div class="learn-title"><i class="ti ti-brain learn-icon" aria-hidden="true"></i> AI agent architecture</div>
+            <div class="learn-sub">Agentic loops · tool registries · autonomous decision-making pipelines</div>
+          </div>
+          <div class="learn-card">
+            <div class="learn-title"><i class="ti ti-cloud learn-icon" aria-hidden="true"></i> AWS Cloud Practitioner</div>
+            <div class="learn-sub">Preparing for certification · cloud-native infra · IaC patterns</div>
+          </div>
+          <div class="learn-card">
+            <div class="learn-title"><i class="ti ti-bug learn-icon" aria-hidden="true"></i> Advanced bug bounty</div>
+            <div class="learn-sub">IDOR chains · auth bypass · payment webhook tamper · structured recon</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">
+      <span style="color:var(--red2);">▶</span>&nbsp;phantom_agent v2.0 · uptime: <span style="color:var(--text);">∞</span>
+    </div>
+    <div class="footer-links">
+      <a class="footer-link" href="https://khawarahemad.com">portfolio</a>
+      <a class="footer-link" href="https://soleset.in">soleset</a>
+      <a class="footer-link" href="mailto:hellow@khawarahemad.com">contact</a>
+    </div>
+    <div class="footer-right">+91 9861016872</div>
+  </div>
+</div>
