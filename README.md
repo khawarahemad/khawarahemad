@@ -14,20 +14,7 @@ I'm a **Computer Science Engineering student**, cybersecurity explorer, and buil
 ---
 
 ![Profile Views](https://komarev.com/ghpvc/?username=khawarahemad&label=Profile%20Views&color=brightgreen&style=flat)
-
----
-
-## 🎯 About Me  
-
-- 🎓 BTech Computer Science (2027)  
-- 🛡️ Focused on Cybersecurity, Red Teaming & System-Level Security  
-- 🤖 Building advanced AI-powered systems and automation tools  
-- 🧠 Strong interest in Operating Systems, Networking, and Low-Level Architecture  
-- 🚀 Founder mindset — building products from scratch and shipping them  
-
 I enjoy working on complex technical systems that combine AI, security, and real-world applications.
-
----
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/khawarahemad/assets/main/coding.gif" width="500" alt="Coding GIF">
