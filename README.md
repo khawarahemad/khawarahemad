@@ -29,41 +29,7 @@ I enjoy working on complex technical systems that combine AI, security, and real
 
 ---
 
-## 🛠 Tech Stack  
-
-### 💻 Languages  
-- Python  
-- C  
-- C++  
-- JavaScript  
-- Swift  
-- SQL  
-
----
-
-### 🧩 Frameworks & Tools  
-- Next.js  
-- Tailwind CSS  
-- Supabase  
-- ASP.NET Core  
-- Git  
-
----
-
-## 🌱 Areas of Deep Interest  
-
-- Offensive Security & Vulnerability Research  
-- AI Agents & Autonomous Systems  
-- System Programming & OS Internals  
-- Secure Backend Architecture  
-- Networking & Protocol-Level Understanding  
-
----
-
-## 🎯 Vision  
-
-I aim to build intelligent systems that operate at scale — secure, autonomous, and efficient.  
-My long-term focus is mastering advanced cybersecurity and AI engineering to create impactful technology.
+![lalalaaa](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExenZxYngyMWpid2ZvMTEwZHZodDhzMXpidnl3ZDYyNDcwcnY5NWxrcyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/YQitE4YNQNahy/giphy.gif)
 
 ---
 
