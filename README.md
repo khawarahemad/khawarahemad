@@ -29,7 +29,9 @@ I enjoy working on complex technical systems that combine AI, security, and real
 
 ---
 
-![lalalaaa](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExenZxYngyMWpid2ZvMTEwZHZodDhzMXpidnl3ZDYyNDcwcnY5NWxrcyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/YQitE4YNQNahy/giphy.gif)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/khawarahemad/assets/main/coding.gif" width="500" alt="Coding GIF">
+</p>
 
 ---
 
