@@ -33,18 +33,4 @@ I enjoy working on complex technical systems that combine AI, security, and real
   <img src="https://raw.githubusercontent.com/khawarahemad/assets/main/coding.gif" width="500" alt="Coding GIF">
 </p>
 
----
-
-## 📌 Let’s Connect  
-
-If you’re into:
-- Cybersecurity  
-- AI systems  
-- Advanced backend architecture  
-- Building ambitious tech projects  
-
-Let’s connect and build something meaningful.
-
----
-
 ⭐ Explore my repositories and let’s build something impactful.
